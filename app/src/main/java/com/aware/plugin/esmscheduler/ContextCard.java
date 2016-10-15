@@ -1,4 +1,4 @@
-package com.aware.plugin.template;
+package com.aware.plugin.esmscheduler;
 
 import android.content.Context;
 import android.os.Handler;

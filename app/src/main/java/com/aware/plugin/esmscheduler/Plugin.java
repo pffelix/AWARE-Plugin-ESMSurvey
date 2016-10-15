@@ -1,9 +1,7 @@
-package com.aware.plugin.template;
+package com.aware.plugin.esmscheduler;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import org.json.JSONException;
@@ -16,7 +14,7 @@ import com.aware.utils.Aware_Plugin;
 import com.aware.utils.Scheduler;
 import com.aware.ESM;
 
-public class ESMScheduler extends Aware_Plugin {
+public class Plugin extends Aware_Plugin {
 
     @Override
     public void onCreate() {
@@ -77,18 +75,40 @@ public class ESMScheduler extends Aware_Plugin {
     private void scheduleMorningQuestionnaire() {
         try {
 
-            String esm_goodmorning = "[{'esm': {" +
-                    "'esm_type': "+ ESM.TYPE_ESM_QUICK_ANSWERS+"," +
-                    "'esm_title': 'Sleep quality'," +
-                    "'esm_instructions': 'Slept well?'," +
-                    "'esm_quick_answers': ['Yes','No']," +
-                    "'esm_expiration_threshold': 0," +
-                    "'esm_trigger': 'goodmorning_check'" +
+            String esm_goodmorning = "[{'esm': {\n" +
+                    "'esm_type':6,\n" +
+                    "'esm_title':'ESM Scale',\n" +
+                    "'esm_instructions':'To what extend do you agree to the statement: \n Right now, I feel bored?',\n" +
+                    "'esm_scale_min':0,\n" +
+                    "'esm_scale_max':100,\n" +
+                    "'esm_scale_start':0,\n" +
+                    "'esm_scale_max_label':'agree',\n" +
+                    "'esm_scale_min_label':'disagree',\n" +
+                    "'esm_scale_step':1,\n" +
+                    "'esm_submit':'Next',\n" +
+                    "'esm_expiration_threshold':60,\n" +
+                    "'esm_trigger':'AWARE Tester'\n" +
+                    "}}, {'esm': { " +
+                    "'esm_type':6,\n" +
+                    "'esm_title':'ESM Scale',\n" +
+                    "'esm_instructions':'To what extend do you agree to the statement: \n Right now, I feel bored(2)?',\n" +
+                    "'esm_scale_min':0,\n" +
+                    "'esm_scale_max':100,\n" +
+                    "'esm_scale_start':0,\n" +
+                    "'esm_scale_max_label':'agree',\n" +
+                    "'esm_scale_min_label':'disagree',\n" +
+                    "'esm_scale_step':1,\n" +
+                    "'esm_submit':'OK',\n" +
+                    "'esm_expiration_threshold':60,\n" +
+                    "'esm_trigger':'AWARE Tester'\n" +
                     "}}]";
 
             Scheduler.Schedule schedule = new Scheduler.Schedule("morning_question");
-            schedule.addHour(14); //we want this schedule every day at 8
-            schedule.addMinute(30);
+            schedule.addHour(9); //we want this schedule every day at 9, 12, 15, 18, 21
+            schedule.addHour(12); //we want this schedule every day at 9, 12, 15, 18, 21
+
+//            schedule.addMinute(40);
+//            schedule.setInterval(4);
             schedule.setActionType(Scheduler.ACTION_TYPE_BROADCAST); //we are doing a broadcast
             schedule.setActionClass(ESM.ACTION_AWARE_QUEUE_ESM); //with this action
             schedule.addActionExtra(ESM.EXTRA_ESM, esm_goodmorning); //and this extra

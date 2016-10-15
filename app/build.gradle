@@ -9,7 +9,7 @@ android {
     buildToolsVersion "24.0.1"
 
     defaultConfig {
-        applicationId "com.aware.plugin.template" //EDIT ME
+        applicationId "com.aware.plugin.esmscheduler" //EDIT ME
         minSdkVersion 10
         targetSdkVersion 24
         versionCode version_code
@@ -31,6 +31,13 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
+
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    output.outputFile = file("$project.buildDir/apk/esmscheduler.apk")
+                }
+
+            }
         }
     }
 
@@ -56,7 +63,7 @@ bintray {
         labels = ['aar','android','framework','aware']
         publicDownloadNumbers = true
         vcsUrl = 'https://github.com/denzilferreira/aware-plugin-template.git' //EDIT ME
-        desc = "AWARE ESMScheduler: ESMScheduler" //EDIT ME
+        desc = "AWARE Plugin: Plugin" //EDIT ME
         userOrg = user
         githubRepo = "denzilferreira/aware-plugin-template" //EDIT ME
 

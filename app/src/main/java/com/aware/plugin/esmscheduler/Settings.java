@@ -1,4 +1,4 @@
-package com.aware.plugin.template;
+package com.aware.plugin.esmscheduler;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,10 +11,10 @@ import com.aware.Aware;
 
 public class Settings extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
-    //ESMScheduler settings in XML @xml/preferences
-    public static final String STATUS_PLUGIN_ESMSCHEDULER= "status_plugin_ESMScheduler";
+    //Plugin settings in XML @xml/preferences
+    public static final String STATUS_PLUGIN_ESMSCHEDULER = "status_plugin_ESMScheduler";
 
-    //ESMScheduler settings UI elements
+    //Plugin settings UI elements
     private static CheckBoxPreference status;
 
     @Override
