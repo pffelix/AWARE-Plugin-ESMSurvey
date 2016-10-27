@@ -44,9 +44,9 @@ public class Settings extends PreferenceActivity implements SharedPreferences.On
             status.setChecked(sharedPreferences.getBoolean(key, false));
         }
         if (Aware.getSetting(this, STATUS_PLUGIN_ESMSCHEDULER).equals("true")) {
-            Aware.startPlugin(getApplicationContext(), "com.aware.plugin.template");
+            Aware.startPlugin(getApplicationContext(), "com.aware.plugin.esmscheduler");
         } else {
-            Aware.stopPlugin(getApplicationContext(), "com.aware.plugin.template");
+            Aware.stopPlugin(getApplicationContext(), "com.aware.plugin.esmscheduler");
         }
     }
 }
