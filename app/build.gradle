@@ -9,7 +9,7 @@ android {
     buildToolsVersion "24.0.1"
 
     defaultConfig {
-        applicationId "com.aware.plugin.esmscheduler" //EDIT ME
+        applicationId "com.aware.plugin.esm_survey" //EDIT ME
         minSdkVersion 10
         targetSdkVersion 24
         versionCode version_code
@@ -34,7 +34,7 @@ android {
 
             applicationVariants.all { variant ->
                 variant.outputs.each { output ->
-                    output.outputFile = file("$project.buildDir/apk/esmscheduler.apk")
+                    output.outputFile = file("$project.buildDir/apk/esm_survey.apk")
                 }
 
             }
@@ -58,14 +58,14 @@ bintray {
         repo = 'com.awareframework'
         name = android.defaultConfig.applicationId
         licenses = ['Apache-2.0']
-        websiteUrl = 'https://github.com/denzilferreira/aware-plugin-template' //EDIT ME
-        issueTrackerUrl = 'https://github.com/denzilferreira/aware-plugin-template/issues' //EDIT ME
+        websiteUrl = 'https://github.com/felixpfreundtner/ESMSurvey' //EDIT ME
+        issueTrackerUrl = 'https://github.com/felixpfreundtner/ESMSurvey/issues' //EDIT ME
         labels = ['aar','android','framework','aware']
         publicDownloadNumbers = true
-        vcsUrl = 'https://github.com/denzilferreira/aware-plugin-template.git' //EDIT ME
+        vcsUrl = 'https://github.com/felixpfreundtner/ESMSurvey.git' //EDIT ME
         desc = "AWARE Plugin: Plugin" //EDIT ME
         userOrg = user
-        githubRepo = "denzilferreira/aware-plugin-template" //EDIT ME
+        githubRepo = "felixpfreundtner/ESMSurvey" //EDIT ME
 
         version {
             name = "$version_readable"

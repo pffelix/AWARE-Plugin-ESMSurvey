@@ -1,4 +1,4 @@
-package com.aware.plugin.esmscheduler;
+package com.aware.plugin.esm_survey;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

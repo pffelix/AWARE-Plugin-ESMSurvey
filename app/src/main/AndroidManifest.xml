@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.aware.plugin.esmscheduler">
+    package="com.aware.plugin.esm_survey">
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -8,15 +8,15 @@
         android:label="@string/app_name">
 
         <service
-            android:name=".Plugin"
+            android:name="com.aware.plugin.esm_survey.Plugin"
             android:exported="true" />
 
         <activity
-            android:name="com.aware.plugin.esmscheduler.Settings"
+            android:name="com.aware.plugin.esm_survey.Settings"
             android:exported="true" />
 
         <provider
-            android:name="com.aware.plugin.esmscheduler.Provider"
+            android:name="com.aware.plugin.esm_survey.Provider"
             android:authorities="${applicationId}.provider.xxx"
             android:exported="true"
             android:readPermission="com.aware.READ_CONTEXT_DATA"
