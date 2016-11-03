@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="aware-core-4.0.641">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.awareframework/aware-core/4.0.641/res" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.awareframework/aware-core/4.0.641/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.awareframework/aware-core/4.0.641/8631625bedcc083cf16b0e82f8404613e4e0f72a/aware-core-4.0.641-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -632,8 +632,8 @@ public class Plugin extends Aware_Plugin {
                     "}},{'esm':{" +
                     "'esm_type':2," +
                     "'esm_title':'The survey runs now since 7 days! Time for feedback (13/13)'," +
-                    "'esm_instructions':'I will draw the winners for the three 50 euro coupons in end of November. If you want to leave the study now, you can press the test tube symbol left to the cloud in the main window of the AWARE app and select QUIT STUDY. However, it would be great if you decide to continue to answer the questions about your boredom and stress state for 7 more days. This would help me a lot to improve the accuracy and reliability of the generated results. As compensation you will have a double chance to win the coupons'," +
-                    "'esm_radios':['I want to help and answer the questions for 7 more days','I want to leave the study]," +
+                    "'esm_instructions':'I will draw the winners for the three 50 euro coupons that are sponsored by my university in end of November. If you want to leave the study now, you can press the test tube symbol left to the cloud in the main window of the AWARE app and select QUIT STUDY. However, it would be great if you decide to continue to answer the questions about your boredom and stress state for 7 more days. This would help a lot to improve the accuracy and reliability of the generated study results. As compensation I will grant you a double chance to win the coupons'," +
+                    "'esm_radios':['Yes, i want to help and will answer the questions for 7 more days','No, I will leave the study']," +
                     "'esm_submit':'Next'," +
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
