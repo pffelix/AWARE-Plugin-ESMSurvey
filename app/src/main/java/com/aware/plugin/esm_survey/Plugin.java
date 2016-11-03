@@ -25,14 +25,13 @@ public class Plugin extends Aware_Plugin {
     public void onCreate() {
         super.onCreate();
 
-        TAG = "GOODMORNING";
+        TAG = "ESM_Plugin";
         DEBUG = Aware.getSetting(this, Aware_Preferences.DEBUG_FLAG).equals("true");
 
-        if (DEBUG) Log.d(TAG, "Good Morning plugin running");
+        if (DEBUG) Log.d(TAG, "Plugin running");
         //Aware.setSetting(this, Aware_Preferences.STATUS_ESM, true); //we will need the ESMs
         //Aware.startESM(this); //ask AWARE to start ESM , Aware_Preferences.STATUS_ESM
 
-        String s ="test";
         feedbackQuestionnaire(); //Position 2 (Alternative:1)
         initialQuestionnaire(); //3 (Alternative:2)
         esmQuestionnaire(); //1 (Alternative:3)
@@ -73,7 +72,7 @@ public class Plugin extends Aware_Plugin {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (DEBUG) Log.d(TAG, "Good Morning plugin terminating.");
+        if (DEBUG) Log.d(TAG, "Plugin terminating.");
         Aware.stopESM(this); //turn off ESM for our plugin Aware_Preferences.STATUS_ESM
         Aware.setSetting(this, Settings.STATUS_PLUGIN_ESMSURVEY, false);
         Aware.stopPlugin(this, "com.aware.plugin.esm_survey");
@@ -82,7 +81,6 @@ public class Plugin extends Aware_Plugin {
 
     private void initialQuestionnaire() {
         try {
-
             String initial_questions = "[{'esm':{" +
                     "'esm_type':2," +
                     "'esm_title':'Demographic questions (1/5)'," +
@@ -485,7 +483,7 @@ public class Plugin extends Aware_Plugin {
         try {
             String feedback_questions = "[{'esm':{" +
                     "'esm_type':6," +
-                    "'esm_title':'The survey runs now since 7 days! Time for feedback (1/12)'," +
+                    "'esm_title':'The survey runs now since 7 days! Time for feedback (1/13)'," +
                     "'esm_instructions':'To what extend do you agree: In the last 7 days I was often stressed'," +
                     "'esm_scale_start':0," +
                     "'esm_scale_min':-2," +
@@ -499,7 +497,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_trigger':'personality_stress_frequency_week'" +
                     "}},{'esm':{" +
                     "'esm_type':6," +
-                    "'esm_title':'The survey runs now since 7 days! Time for feedback (2/12)'," +
+                    "'esm_title':'The survey runs now since 7 days! Time for feedback (2/13)'," +
                     "'esm_instructions':'To what extend do you agree: In the last 7 days I was often bored'," +
                     "'esm_scale_start':0," +
                     "'esm_scale_min':-2," +
@@ -513,7 +511,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_trigger':'personality_boredom_frequency_week'" +
                     "}},{'esm':{" +
                     "'esm_type':4," +
-                    "'esm_title':'The survey runs now since 7 days! Time for feedback (3/12)'," +
+                    "'esm_title':'The survey runs now since 7 days! Time for feedback (3/13)'," +
                     "'esm_instructions':'How was your overall experience with the survey app?'," +
                     "'esm_likert_max':5," +
                     "'esm_likert_max_label':'great'," +
@@ -525,7 +523,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_trigger':'feedback_overall_rating'" +
                     "}},{'esm':{" +
                     "'esm_type':1," +
-                    "'esm_title':'The survey runs now since 7 days! Time for feedback (4/12)'," +
+                    "'esm_title':'The survey runs now since 7 days! Time for feedback (4/13)'," +
                     "'esm_instructions':'Did you have technical problems with the app?'," +
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
@@ -533,7 +531,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_trigger':'feedback_technical'" +
                     "}},{'esm':{" +
                     "'esm_type':1," +
-                    "'esm_title':'The survey runs now since 7 days! Time for feedback (5/12)'," +
+                    "'esm_title':'The survey runs now since 7 days! Time for feedback (5/13)'," +
                     "'esm_instructions':'Did you have problems understanding the survey questions?'," +
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
@@ -541,7 +539,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_trigger':'feedback_question'" +
                     "}},{'esm':{" +
                     "'esm_type':6," +
-                    "'esm_title':'The survey runs now since 7 days! Time for feedback (6/12)'," +
+                    "'esm_title':'The survey runs now since 7 days! Time for feedback (6/13)'," +
                     "'esm_instructions':'Was it difficult for you to identify your own boredom and stress state?'," +
                     "'esm_scale_start':0," +
                     "'esm_scale_min':-2," +
@@ -555,7 +553,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_trigger':'feedback_question_esm_identify'" +
                     "}},{'esm':{" +
                     "'esm_type':6," +
-                    "'esm_title':'The survey runs now since 7 days! Time for feedback (7/12)'," +
+                    "'esm_title':'The survey runs now since 7 days! Time for feedback (7/13)'," +
                     "'esm_instructions':'Was the frequency of the periodical question about your boredom and stress state too high and tiring?'," +
                     "'esm_scale_start':0," +
                     "'esm_scale_min':-2," +
@@ -569,7 +567,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_trigger':'feedback_question_esm_frequency'" +
                     "}},{'esm':{" +
                     "'esm_type':6," +
-                    "'esm_title':'The survey runs now since 7 days! Time for feedback (8/12)'," +
+                    "'esm_title':'The survey runs now since 7 days! Time for feedback (8/13)'," +
                     "'esm_instructions':'Did you accurately answer the periodical question about your boredom and stress state at all times over the 7 days?'," +
                     "'esm_scale_start':0," +
                     "'esm_scale_min':-2," +
@@ -583,7 +581,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_trigger':'feedback_user_reliability'" +
                     "}},{'esm':{" +
                     "'esm_type':6," +
-                    "'esm_title':'The survey runs now since 7 days! Time for feedback (9/12)'," +
+                    "'esm_title':'The survey runs now since 7 days! Time for feedback (9/13)'," +
                     "'esm_instructions':'Was the periodical question about your boredom and stress state intuitive to answer?'," +
                     "'esm_scale_start':0," +
                     "'esm_scale_min':-2," +
@@ -597,7 +595,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_trigger':'feedback_question_esm_intuitive'" +
                     "}},{'esm':{" +
                     "'esm_type':6," +
-                    "'esm_title':'The survey runs now since 7 days! Time for feedback (10/12)'," +
+                    "'esm_title':'The survey runs now since 7 days! Time for feedback (10/13)'," +
                     "'esm_instructions':'Did you feel monitored while participating in the study?'," +
                     "'esm_scale_start':0," +
                     "'esm_scale_min':-2," +
@@ -611,7 +609,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_trigger':'feedback_monitoring'" +
                     "}},{'esm':{" +
                     "'esm_type':6," +
-                    "'esm_title':'The survey runs now since 7 days! Time for feedback (11/12)'," +
+                    "'esm_title':'The survey runs now since 7 days! Time for feedback (11/13)'," +
                     "'esm_instructions':'Do you think you showed an unusual smartphone usage behaviour because of participating in the study?'," +
                     "'esm_scale_start':0," +
                     "'esm_scale_min':-2," +
@@ -625,12 +623,21 @@ public class Plugin extends Aware_Plugin {
                     "'esm_trigger':'feedback_reactivity'" +
                     "}},{'esm':{" +
                     "'esm_type':1," +
-                    "'esm_title':'The survey runs now since 7 days! Time for feedback (12/12)'," +
-                    "'esm_instructions':'If you want to give a more detailed feedback, please write it down here. I will draw the winners for the three 50 euro coupons in end of november and will inform you if you have won one. You would help me a lot to achieve more reliable results, if you continue to answer the questions about your boredom and stress state for 3 more days. If you want to leave the study, just press the test tube symbol left to the cloud in the main window of the AWARE app and select QUIT STUDY.'," +
+                    "'esm_title':'The survey runs now since 7 days! Time for feedback (12/13)'," +
+                    "'esm_instructions':'If you want to add some more feedback, please write it down here:'," +
                     "'esm_submit':'Submit'," +
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
                     "'esm_trigger':'feedback_extra'" +
+                    "}},{'esm':{" +
+                    "'esm_type':2," +
+                    "'esm_title':'The survey runs now since 7 days! Time for feedback (13/13)'," +
+                    "'esm_instructions':'I will draw the winners for the three 50 euro coupons in end of November. If you want to leave the study now, you can press the test tube symbol left to the cloud in the main window of the AWARE app and select QUIT STUDY. However, it would be great if you decide to continue to answer the questions about your boredom and stress state for 7 more days. This would help me a lot to improve the accuracy and reliability of the generated results. As compensation you will have a double chance to win the coupons'," +
+                    "'esm_radios':['I want to help and answer the questions for 7 more days','I want to leave the study]," +
+                    "'esm_submit':'Next'," +
+                    "'esm_expiration_threshold':0," +
+                    "'esm_notification_timeout':0," +
+                    "'esm_trigger':'feedback_continue'" +
                     "}}]";
 
 
