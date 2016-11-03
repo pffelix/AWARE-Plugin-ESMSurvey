@@ -82,11 +82,11 @@ public class Plugin extends Aware_Plugin {
 
     private void initialQuestionnaire() {
         try {
-//            Date dNow_demographic = new Date( ); // Instantiate a Date object
-//            Calendar cal_demographic = Calendar.getInstance();
-//            cal_demographic.setTime(dNow_demographic);
-//            cal_demographic.add(Calendar.HOUR_OF_DAY,3); //DATE, MINUTE
-//            String string_date = "test";
+            Date dNow_demographic = new Date( ); // Instantiate a Date object
+            Calendar cal_demographic = Calendar.getInstance();
+            cal_demographic.setTime(dNow_demographic);
+            cal_demographic.add(Calendar.HOUR_OF_DAY,3); //DATE, MINUTE
+            String string_date = "test";
             String initial_questions = "[{'esm':{" +
                     "'esm_type':2," +
                     "'esm_title':'Demographic questions (1/5)'," +
@@ -667,8 +667,3 @@ public class Plugin extends Aware_Plugin {
 
 
 }
-
-
-
-
-
