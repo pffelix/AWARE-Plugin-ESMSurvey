@@ -40,34 +40,34 @@ public class Plugin extends Aware_Plugin {
         Aware.startPlugin(this, "com.aware.plugin.esm_survey");
     }
 
-    //This function gets called every 5 minutes by AWARE to make sure this plugin is still running.
-//    @Override
-//    public int onStartCommand(Intent intent, int flags, int startId) {
-//
-//        boolean permissions_ok = true;
-//        for (String p : REQUIRED_PERMISSIONS) {
-//            if (ContextCompat.checkSelfPermission(this, p) != PackageManager.PERMISSION_GRANTED) {
-//                permissions_ok = false;
-//                break;
-//            }
-//        }
-//
-//        if (permissions_ok) {
-//            //Check if the user has toggled the debug messages
-//            DEBUG = Aware.getSetting(this, Aware_Preferences.DEBUG_FLAG).equals("true");
-//
-//            //Initialize our plugin's settings
-//            Aware.setSetting(this, Settings.STATUS_PLUGIN_ESMSURVEY, true);
-//
-//        } else {
-//            Intent permissions = new Intent(this, PermissionsHandler.class);
-//            permissions.putExtra(PermissionsHandler.EXTRA_REQUIRED_PERMISSIONS, REQUIRED_PERMISSIONS);
-//            permissions.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            startActivity(permissions);
-//        }
-//
-//        return super.onStartCommand(intent, flags, startId);
-//    }
+    // This function gets called every 5 minutes by AWARE to make sure this plugin is still running.
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+
+        boolean permissions_ok = true;
+        for (String p : REQUIRED_PERMISSIONS) {
+            if (ContextCompat.checkSelfPermission(this, p) != PackageManager.PERMISSION_GRANTED) {
+                permissions_ok = false;
+                break;
+            }
+        }
+
+        if (permissions_ok) {
+            //Check if the user has toggled the debug messages
+            DEBUG = Aware.getSetting(this, Aware_Preferences.DEBUG_FLAG).equals("true");
+
+            //Initialize our plugin's settings
+            Aware.setSetting(this, Settings.STATUS_PLUGIN_ESMSURVEY, true);
+
+        } else {
+            Intent permissions = new Intent(this, PermissionsHandler.class);
+            permissions.putExtra(PermissionsHandler.EXTRA_REQUIRED_PERMISSIONS, REQUIRED_PERMISSIONS);
+            permissions.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(permissions);
+        }
+
+        return super.onStartCommand(intent, flags, startId);
+    }
 
     @Override
     public void onDestroy() {
@@ -94,7 +94,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_type':2," +
                     "'esm_title':'Demographic questions (2/5)'," +
                     "'esm_instructions':'What is your age?'," +
-                    "'esm_radios':['18-24 Years','25-29 Years','30-34 Years','35-44 Years','45-54 Years','55+ Years']," +
+                    "'esm_radios':['18-24 years','25-29 years','30-34 years','35-44 years','45-54 years','55+ years']," +
                     "'esm_submit':'Next'," +
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
@@ -112,7 +112,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_type':2," +
                     "'esm_title':'Demographic questions (4/5)'," +
                     "'esm_instructions':'What is the highest level of education you have completed?'," +
-                    "'esm_radios':['Ph.D.','Graduate/Master','Undergraduate/Bachelor','Secondary school','Middle school','Primary school','Other']," +
+                    "'esm_radios':['Ph.D.','Graduate/Master','Undergraduate/Bachelor','Secondary school','Middle school','Main school','Primary school','Other']," +
                     "'esm_submit':'Next'," +
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
@@ -121,7 +121,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_type':2," +
                     "'esm_title':'Demographic questions (5/5)'," +
                     "'esm_instructions':'What is your occupation?'," +
-                    "'esm_radios':['Student','Intern','Apprentice','Employed for wages','Self-employed','Unemployed','Homemaker','Civil servant','Military','Retired','Unable to work','Other']," +
+                    "'esm_radios':['Student','Intern','Apprentice','Employed for wages','Self-employed','Unemployed','Civil servant','Military','Other']," +
                     "'esm_submit':'Next'," +
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
@@ -129,7 +129,7 @@ public class Plugin extends Aware_Plugin {
                     "}},{'esm':{" +
                     "'esm_type':6," +
                     "'esm_title':'Questions about your activities in the next 7 days (1/3)'," +
-                    "'esm_instructions':'What is your workload in the next 7 days?'," +
+                    "'esm_instructions':'How busy are you in the next 7 days?'," +
                     "'esm_scale_start':0," +
                     "'esm_scale_min':-2," +
                     "'esm_scale_max':2," +
@@ -139,11 +139,11 @@ public class Plugin extends Aware_Plugin {
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
                     "'esm_submit':'Next'," +
-                    "'esm_trigger':'workload_time_time'" +
+                    "'esm_trigger':'week_workload_time'" +
                     "}},{'esm':{" +
                     "'esm_type':6," +
                     "'esm_title':'Questions about your activities in the next 7 days (2/3)'," +
-                    "'esm_instructions':'Are you looking forward to your activities in the next 7 days'," +
+                    "'esm_instructions':'Are you looking forward to your activities in the next 7 days?'," +
                     "'esm_scale_start':0," +
                     "'esm_scale_min':-2," +
                     "'esm_scale_max':2," +
@@ -153,7 +153,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
                     "'esm_submit':'Next'," +
-                    "'esm_trigger':'workload_valence_week'" +
+                    "'esm_trigger':'week_workload_valence'" +
                     "}},{'esm':{" +
                     "'esm_type':2," +
                     "'esm_title':'Questions about your activities in the next 7 days (3/3)'," +
@@ -162,7 +162,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_submit':'Next'," +
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
-                    "'esm_trigger':'workload_type_week'" +
+                    "'esm_trigger':'week_workload_type'" +
                     "}},{'esm':{" +
                     "'esm_type':6," +
                     "'esm_title':'Questions about your personality (1/13)'," +
@@ -330,7 +330,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
                     "'esm_submit':'Next'," +
-                    "'esm_trigger':'personality_boredom_frequency'" +
+                    "'esm_trigger':'personality_boredom'" +
                     "}},{'esm':{" +
                     "'esm_type':6," +
                     "'esm_title':'Questions about your personality (13/13)'," +
@@ -344,7 +344,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
                     "'esm_submit':'Next'," +
-                    "'esm_trigger':'personality_stress_frequency'" +
+                    "'esm_trigger':'personality_stress'" +
                     "}},{'esm':{" +
                     "'esm_type':6," +
                     "'esm_title':'Questions about your smartphone usage (1/5)'," +
@@ -418,15 +418,10 @@ public class Plugin extends Aware_Plugin {
                     "}}]";
 
             Scheduler.Schedule schedule_initial = new Scheduler.Schedule("initial_questions");
-            schedule_initial.setInterval(100000);
-//            Date dNow_demographic = new Date( ); // Instantiate a Date object
-//            Calendar cal_demographic = Calendar.getInstance();
-//            cal_demographic.setTime(dNow_demographic);
-//            cal_demographic.add(Calendar.MINUTE,1); //DATE, MINUTE
-//            schedule_demographic.setTimer(cal_demographic);
-            schedule_initial.setActionType(Scheduler.ACTION_TYPE_BROADCAST); //we are doing a broadcast
-            schedule_initial.setActionClass(ESM.ACTION_AWARE_QUEUE_ESM); //with this action
-            schedule_initial.addActionExtra(ESM.EXTRA_ESM, initial_questions); //and this extra
+            schedule_initial.setInterval(100000)
+                            .setActionType(Scheduler.ACTION_TYPE_BROADCAST) //we are doing a broadcast
+                            .setActionClass(ESM.ACTION_AWARE_QUEUE_ESM) //with this action
+                            .addActionExtra(ESM.EXTRA_ESM, initial_questions); //and this extra
 
             Scheduler.saveSchedule(getApplicationContext(), schedule_initial);
 
@@ -457,16 +452,16 @@ public class Plugin extends Aware_Plugin {
                     "'esm_scale_min_label':'bored'," +
                     "'esm_scale_step':1," +
                     "'esm_expiration_threshold':0," +
-                    "'esm_notification_timeout':300," +
+                    "'esm_notification_timeout':6600," +
                     "'esm_submit':'Submit'," +
-                    "'esm_trigger':'personality_boredom_stress_frequency_esm'" +
+                    "'esm_trigger':'esm_boredom_stress'" +
                     "}}]";
 
             Scheduler.Schedule schedule_esm = new Scheduler.Schedule("esm_questions");
-            schedule_esm.setInterval(10);
-            schedule_esm.setActionType(Scheduler.ACTION_TYPE_BROADCAST); //we are doing a broadcast
-            schedule_esm.setActionClass(ESM.ACTION_AWARE_QUEUE_ESM); //with this action
-            schedule_esm.addActionExtra(ESM.EXTRA_ESM, esm_questions); //and this extra
+            schedule_esm.setInterval(120)
+                        .setActionType(Scheduler.ACTION_TYPE_BROADCAST) //we are doing a broadcast
+                        .setActionClass(ESM.ACTION_AWARE_QUEUE_ESM) //with this action
+                        .addActionExtra(ESM.EXTRA_ESM, esm_questions); //and this extra
 
             Scheduler.saveSchedule(getApplicationContext(), schedule_esm);
 
@@ -494,7 +489,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
                     "'esm_submit':'Next'," +
-                    "'esm_trigger':'personality_stress_frequency_week'" +
+                    "'esm_trigger':'week_stress'" +
                     "}},{'esm':{" +
                     "'esm_type':6," +
                     "'esm_title':'The survey runs now since 7 days! Time for feedback (2/13)'," +
@@ -508,7 +503,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
                     "'esm_submit':'Next'," +
-                    "'esm_trigger':'personality_boredom_frequency_week'" +
+                    "'esm_trigger':'week_boredom'" +
                     "}},{'esm':{" +
                     "'esm_type':4," +
                     "'esm_title':'The survey runs now since 7 days! Time for feedback (3/13)'," +
@@ -520,7 +515,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
                     "'esm_submit':'Next'," +
-                    "'esm_trigger':'feedback_overall_rating'" +
+                    "'esm_trigger':'feedback_overall'" +
                     "}},{'esm':{" +
                     "'esm_type':1," +
                     "'esm_title':'The survey runs now since 7 days! Time for feedback (4/13)'," +
@@ -528,7 +523,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
                     "'esm_submit':'Next'," +
-                    "'esm_trigger':'feedback_technical'" +
+                    "'esm_trigger':'feedback_app'" +
                     "}},{'esm':{" +
                     "'esm_type':1," +
                     "'esm_title':'The survey runs now since 7 days! Time for feedback (5/13)'," +
@@ -536,7 +531,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
                     "'esm_submit':'Next'," +
-                    "'esm_trigger':'feedback_question'" +
+                    "'esm_trigger':'feedback_questions'" +
                     "}},{'esm':{" +
                     "'esm_type':6," +
                     "'esm_title':'The survey runs now since 7 days! Time for feedback (6/13)'," +
@@ -550,11 +545,11 @@ public class Plugin extends Aware_Plugin {
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
                     "'esm_submit':'Next'," +
-                    "'esm_trigger':'feedback_question_esm_identify'" +
+                    "'esm_trigger':'feedback_esm_identify'" +
                     "}},{'esm':{" +
                     "'esm_type':6," +
                     "'esm_title':'The survey runs now since 7 days! Time for feedback (7/13)'," +
-                    "'esm_instructions':'Was the frequency of the periodical question about your boredom and stress state too high and tiring?'," +
+                    "'esm_instructions':'Was the frequency of the repeated question about your boredom and stress state too high and tiring?'," +
                     "'esm_scale_start':0," +
                     "'esm_scale_min':-2," +
                     "'esm_scale_max':2," +
@@ -564,11 +559,11 @@ public class Plugin extends Aware_Plugin {
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
                     "'esm_submit':'Next'," +
-                    "'esm_trigger':'feedback_question_esm_frequency'" +
+                    "'esm_trigger':'feedback_esm_frequency'" +
                     "}},{'esm':{" +
                     "'esm_type':6," +
                     "'esm_title':'The survey runs now since 7 days! Time for feedback (8/13)'," +
-                    "'esm_instructions':'Did you accurately answer the periodical question about your boredom and stress state at all times over the 7 days?'," +
+                    "'esm_instructions':'Did you accurately answer the repeated question about your boredom and stress state at all times over the past 7 days?'," +
                     "'esm_scale_start':0," +
                     "'esm_scale_min':-2," +
                     "'esm_scale_max':2," +
@@ -578,11 +573,11 @@ public class Plugin extends Aware_Plugin {
                     "'esm_submit':'Next'," +
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
-                    "'esm_trigger':'feedback_user_reliability'" +
+                    "'esm_trigger':'feedback_esm_reliability'" +
                     "}},{'esm':{" +
                     "'esm_type':6," +
                     "'esm_title':'The survey runs now since 7 days! Time for feedback (9/13)'," +
-                    "'esm_instructions':'Was the periodical question about your boredom and stress state intuitive to answer?'," +
+                    "'esm_instructions':'Was the repeated question about your boredom and stress state intuitive to answer?'," +
                     "'esm_scale_start':0," +
                     "'esm_scale_min':-2," +
                     "'esm_scale_max':2," +
@@ -592,7 +587,7 @@ public class Plugin extends Aware_Plugin {
                     "'esm_submit':'Next'," +
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
-                    "'esm_trigger':'feedback_question_esm_intuitive'" +
+                    "'esm_trigger':'feedback_esm_intuitive'" +
                     "}},{'esm':{" +
                     "'esm_type':6," +
                     "'esm_title':'The survey runs now since 7 days! Time for feedback (10/13)'," +
@@ -624,17 +619,17 @@ public class Plugin extends Aware_Plugin {
                     "}},{'esm':{" +
                     "'esm_type':1," +
                     "'esm_title':'The survey runs now since 7 days! Time for feedback (12/13)'," +
-                    "'esm_instructions':'If you want to add some more feedback, please write it down here:'," +
-                    "'esm_submit':'Submit'," +
+                    "'esm_instructions':'If you want to add some more detailed feedback, please write it down here:'," +
+                    "'esm_submit':'Next'," +
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
                     "'esm_trigger':'feedback_extra'" +
                     "}},{'esm':{" +
                     "'esm_type':2," +
                     "'esm_title':'The survey runs now since 7 days! Time for feedback (13/13)'," +
-                    "'esm_instructions':'I will draw the winners for the three 50 euro coupons that are sponsored by my university in end of November. If you want to leave the study now, you can press the test tube symbol left to the cloud in the main window of the AWARE app and select QUIT STUDY. However, it would be great if you decide to continue to answer the questions about your boredom and stress state for 7 more days. This would help a lot to improve the accuracy and reliability of the generated study results. As compensation I will grant you a double chance to win the coupons'," +
-                    "'esm_radios':['Yes, i want to help and will answer the questions for 7 more days','No, I will leave the study']," +
-                    "'esm_submit':'Next'," +
+                    "'esm_instructions':'I will draw the winners for the three 50 Euro coupons sponsored by my university in end of November and will inform you if you have won one. You would help me a lot by continuing to answer the repeated question about your boredom and stress state for 7 more days as it would significantly improve the accuracy and reliability of your dataset. If you want to do so, please check the Yes box. Otherwise, if you want to leave the study now, check the No box and press the test tube symbol left to the cloud in the main window of the AWARE app and select QUIT STUDY.'," +
+                    "'esm_radios':['Yes, I want to continue for 7 more days','No, I will leave the study']," +
+                    "'esm_submit':'Submit'," +
                     "'esm_expiration_threshold':0," +
                     "'esm_notification_timeout':0," +
                     "'esm_trigger':'feedback_continue'" +
@@ -643,15 +638,15 @@ public class Plugin extends Aware_Plugin {
 
 
             Scheduler.Schedule schedule_feedback = new Scheduler.Schedule("feedback_questions");
-            //schedule_feedback.setInterval(100000);
             Date dNow_feedback = new Date( ); // Instantiate a Date object
             Calendar cal_feedback = Calendar.getInstance();
             cal_feedback.setTime(dNow_feedback);
-            cal_feedback.add(Calendar.MINUTE,6); //DATE, MINUTE
-            schedule_feedback.setTimer(cal_feedback);
-            schedule_feedback.setActionType(Scheduler.ACTION_TYPE_BROADCAST); //we are doing a broadcast
-            schedule_feedback.setActionClass(ESM.ACTION_AWARE_QUEUE_ESM); //with this action
-            schedule_feedback.addActionExtra(ESM.EXTRA_ESM, feedback_questions); //and this extra
+            cal_feedback.add(Calendar.DATE,7); //DATE, MINUTE
+            //cal_feedback.add(Calendar.MINUTE,10); //DATE, MINUTE
+            schedule_feedback.setTimer(cal_feedback)
+                             .setActionType(Scheduler.ACTION_TYPE_BROADCAST) //we are doing a broadcast
+                             .setActionClass(ESM.ACTION_AWARE_QUEUE_ESM) //with this action
+                             .addActionExtra(ESM.EXTRA_ESM, feedback_questions); //and this extra
 
             Scheduler.saveSchedule(getApplicationContext(), schedule_feedback);
 

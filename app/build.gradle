@@ -58,14 +58,14 @@ bintray {
         repo = 'com.awareframework'
         name = android.defaultConfig.applicationId
         licenses = ['Apache-2.0']
-        websiteUrl = 'https://github.com/denzilferreira/aware-plugin-template' //EDIT ME
-        issueTrackerUrl = 'https://github.com/denzilferreira/aware-plugin-template/issues' //EDIT ME
+        websiteUrl = 'https://github.com/felixpfreundtner/ESMSurvey' //EDIT ME
+        issueTrackerUrl = 'https://github.com/felixpfreundtner/ESMSurvey/issues' //EDIT ME
         labels = ['aar','android','framework','aware']
         publicDownloadNumbers = true
-        vcsUrl = 'https://github.com/denzilferreira/aware-plugin-template.git' //EDIT ME
-        desc = "AWARE Plugin: Template" //EDIT ME
+        vcsUrl = 'https://github.com/felixpfreundtner/ESMSurvey.git' //EDIT ME
+        desc = "AWARE Plugin: ESM Scheduler" //EDIT ME
         userOrg = user
-        githubRepo = "denzilferreira/aware-plugin-template" //EDIT ME
+        githubRepo = "felixpfreundtner/ESMSurvey" //EDIT ME
 
         version {
             name = "$version_readable"
@@ -79,7 +79,7 @@ bintray {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile "com.android.support:appcompat-v7:${support_libs}"
-    compile "com.awareframework:aware-core:4.0.641"
+    compile "com.awareframework:aware-core:${aware_libs}@aar"
     compile "com.koushikdutta.ion:ion:2.1.6"
     compile "org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.0.2"
 }
